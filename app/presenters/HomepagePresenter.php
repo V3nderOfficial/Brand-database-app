@@ -27,24 +27,24 @@ class HomepagePresenter extends Nette\Application\UI\Presenter
      */
     public function renderDefault(): void
     {
-        $intCount = $this->getCount();
+        $count = $this->getCount();
         $sort = $this->getSort();
-        $intPage = $this->getPage();
+        $page = $this->getPage();
 
         $brandsCount = $this->getBrandsCount();
-        $maxPage = ceil($brandsCount / $intCount);
+        $maxPage = ceil($brandsCount / $count);
 
-        if($intPage > $maxPage)
+        if($page > $maxPage)
         {
-            $intPage = intval($maxPage);
+            $page = intval($maxPage);
         }
 
-        $brandNames = $this->getBrandNames($intCount, $sort, $intPage);
+        $brandNames = $this->getBrandNames($count, $sort, $page);
 
         $this->template->setParameters([
-            'count' => $intCount,
+            'count' => $count,
             'sort' => $sort,
-            'page' => $intPage,
+            'page' => $page,
             'brandNames' => $brandNames,
             'minPage' => 1,
             'maxPage' => $maxPage
@@ -52,7 +52,7 @@ class HomepagePresenter extends Nette\Application\UI\Presenter
     }
 
     /**
-     * Akcia ktorá vymaže značku z table brands
+     * Akcia ktorá vymaže značku
      *
      * @return void
      * @throws AbortException
@@ -76,7 +76,7 @@ class HomepagePresenter extends Nette\Application\UI\Presenter
     }
 
     /**
-     * Metóda premení premennú na integer, zadá jej defaultnú hodnotu a zabráni nežiaduce hodnoty
+     * Načíta count z URL
      *
      * @return int
      */
@@ -86,23 +86,23 @@ class HomepagePresenter extends Nette\Application\UI\Presenter
 
         if (is_numeric($count))
         {
-            $intCount = intval($count);
+            $count = intval($count);
         }
         else
         {
             return 10;
         }
 
-        if ($intCount !== 10 && $intCount !== 20 && $intCount !== 30)
+        if ($count !== 10 && $count !== 20 && $count !== 30)
         {
             return 10;
         }
 
-        return $intCount;
+        return $count;
     }
 
     /**
-     * Metóda zadá defaultnú hodnotu a zabráni nežiaduce hodnoty
+     * Načíta sort z URL
      *
      * @return string
      */
@@ -119,7 +119,7 @@ class HomepagePresenter extends Nette\Application\UI\Presenter
     }
 
     /**
-     * Metóda premení premennú na integer, zadá jej defaultnú hodnotu a zabráni nežiaduce hodnoty
+     * Načíta page z URL
      *
      * @return int
      */
@@ -129,25 +129,28 @@ class HomepagePresenter extends Nette\Application\UI\Presenter
 
         if (is_numeric($page))
         {
-            $intPage = intval($page);
+            $page = intval($page);
         }
         else
         {
             return 1;
         }
 
-        if ($intPage <= 0)
+        if ($page <= 0)
         {
             return 1;
         }
 
-        return $intPage;
+        return $page;
     }
 
 
     /**
      * Metóda vyberie ID a name z table brands
      *
+     * @param int $count
+     * @param string $sort
+     * @param int $page
      * @return array
      */
     private function getBrandNames(int $count, string $sort, int $page): array
@@ -163,14 +166,12 @@ class HomepagePresenter extends Nette\Application\UI\Presenter
     }
 
     /**
-     * Metóda pripíše hodnotu k $brandId
+     * Metóda načíta brand ID z URL adresy
      *
      * @return int
      */
     private function getBrandId(): int
     {
-        $brandId = $this->getParameter('id');
-
-        return $brandId;
+        return $this->getParameter('id');
     }
 }

@@ -19,7 +19,7 @@ class AddNewBrandPresenter extends Presenter
     }
 
     /**
-     * Metóda umožnuje pridávaniu data do table brands
+     * Vytvorí komponent formulár na pridanie novej značky
      *
      * @return Form
      */

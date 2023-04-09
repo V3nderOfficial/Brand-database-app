@@ -43,7 +43,7 @@ class RenameBrandPresenter extends Presenter
     }
 
     /**
-     * Metóda vyberie brand na základe jeho ID a umožní jeho premenovaniu v table brands
+     * Vytvorí komponent formulár na update značky
      *
      * @return Form
      */
