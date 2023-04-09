@@ -1,0 +1,52 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>{ifset title}{include title|striptags} | {/ifset}SRP</title>
+
+	<link rel="stylesheet" href="{$basePath}/css/style.css">
+	<meta name="viewport" content="width=device-width">
+	{block head}{/block}
+</head>
+
+<body>
+
+	<div class="navbar">
+		<div class="navitem"><a href="#"><ion-icon name="reorder-three-outline" size="large"></ion-icon></a></div>
+		<div class="navitem"><a href="#"><ion-icon name="grid-outline" size="large"></ion-icon></a></div>
+		<div class="navitem"><a href="#"><ion-icon name="people-outline" size="large"></ion-icon></a></div>
+		<div class="navitem"><a href="#"><ion-icon name="alert-circle-outline" size="large"></ion-icon></a></div>
+		<div class="navitem"><a href="#"><ion-icon name="pricetag-outline" size="large"></ion-icon></a></div>
+	</div>
+
+	<header>
+		<div class="topbaritem-1"><b>SRP</b></div>
+		<div class="topbaritem-2"><b>Odhlásiť</b>(admin)</div>
+	</header>
+
+	<div class="top">
+		<ion-icon name="arrow-back-outline" size="large"></ion-icon>Značky
+	</div>
+
+	<main>
+		<div class="content">
+			{include content}
+		</div>
+	</main>
+
+	{block scripts}
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	{/block}
+
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

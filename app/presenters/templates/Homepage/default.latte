@@ -1,0 +1,60 @@
+{block content}
+
+<div>
+    <a n:href="AddNewBrand:default" class="buttonTransfer">+ PRIDAŤ ZNAČKU</a>
+    <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+</div>
+
+<div class="items">
+    <div class="item item-1">
+        <div class="left"><p>Názov</p>
+            <a n:href="this, 'page' => $page, 'count' => $count, 'sort' => 'desc'" n:class="$sort == desc ? active"><ion-icon name="arrow-up-outline"></ion-icon></a>
+            <a n:href="this, 'page' => $page, 'count' => $count, 'sort' => 'asc'" n:class="$sort == asc ? active"><ion-icon name="arrow-down-outline"></ion-icon></a>
+        </div>
+        <div class="right"><p>Akcie</p></div>
+    </div>
+
+    {foreach $brandNames as $brand}
+        <div class="item">
+            <div class="left">
+                <p>{$brand['name']}</p>
+            </div>
+            <div class="right"><p><a n:href="Homepage:deleteBrand id:$brand['id']">Vymazať</a> <a n:href="RenameBrand:default id:$brand['id']">Editovať</a></p></div>
+        </div>
+    {/foreach}
+
+    <div class="list">
+        <a n:href="this, page => max(1, $page - 1), sort => $sort, count => $count">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+        </a>
+        {if $page - $minPage > 1}
+            <a n:href="this, page => $minPage, sort => $sort, count => $count">{$minPage}</a>
+            <span>...</span>
+        {/if}
+
+        {if $page - 1 >= $minPage}
+            <a n:href="this, page => $page - 1, sort => $sort, count => $count">{$page - 1}</a>
+        {/if}
+
+        <span class="active">{$page}</span>
+
+        {if $page + 1 <= $maxPage}
+            <a n:href="this, page => $page + 1, sort => $sort, count => $count">{$page + 1}</a>
+        {/if}
+
+        {if $maxPage - $page > 1}
+            <span>...</span>
+            <a n:href="this, page => $maxPage, sort => $sort, count => $count">{$maxPage}</a>
+        {/if}
+
+        <a n:href="this, page => min($maxPage, $page + 1), sort => $sort, count => $count">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+        </a>
+    </div>
+
+    <div class="quantity">
+        <a n:href="this, 'page' => 1, 'sort' => $sort, 'count' => 10" n:class="$count === 10 ? active">10</a>
+        <a n:href="this, 'page' => 1, 'sort' => $sort, 'count' => 20" n:class="$count === 20 ? active">20</a>
+        <a n:href="this, 'page' => 1, 'sort' => $sort, 'count' => 30" n:class="$count === 30 ? active">30</a>
+    </div>
+</div>

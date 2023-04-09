@@ -1,0 +1,13 @@
+.idea
+log/*
+temp/*
+vendor
+!.gitignore
+!.htaccess
+!web.config
+app/config.local.neon
+
+# composer.lock is recommended to keep under version control in real application
+# to ensure consistency of vendor libs between local and production
+composer.lock
+database/*

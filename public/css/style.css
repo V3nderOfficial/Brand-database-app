@@ -1,0 +1,186 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    background-color: lightgrey;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 56px 56px 1fr;
+    height: 100vh;
+    grid-template-areas:
+            "nav header"
+            "nav top"
+            "nav main";
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    grid-area: nav;
+    background-color: #085AA3;
+}
+
+.navitem {
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.navitem a {
+    color: white;
+}
+
+.navitem:hover {
+    background-color: #4783ec;
+}
+
+header {
+    grid-area: header;
+    display: grid;
+    align-items: center;
+    padding: 0 1em;
+    grid-template-columns: 1fr 1fr;
+    color: white;
+    background-color: #085AA3;
+}
+
+.topbaritem-1 {
+    font-size: 30px;
+}
+
+.topbaritem-2 {
+    text-align: right;
+}
+
+.top {
+    grid-area: top;
+    display: flex;
+    align-items: center;
+    padding: 0 1em;
+    font-size: 20px;
+    color: white;
+    background-color: #4783ec;
+}
+
+main {
+    grid-area: main;
+    padding: 1rem;
+}
+
+.content {
+    background-color: white;
+    margin: 0;
+    padding: 1.5rem 1rem;
+}
+
+.content .buttonTransfer{
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    padding: 0.7rem 2.5rem;
+    border: 0;
+    color: white;
+    background-color: #4783ec;
+}
+
+.content .buttonTransfer:hover {
+    background-color: #085AA3;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1.4rem;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 50px;
+    border: solid 1px grey;
+    border-top: none;
+    align-items: center;
+    padding: 0 1em;
+}
+
+.item .left {
+    display: flex;
+}
+
+.item .left ion-icon{
+    padding-top: 16px;
+}
+
+.item .right {
+    text-align: right;
+}
+.item .right a{
+    color: lightgray;
+    text-decoration: none;
+}
+
+.item-1 {
+    border-top: solid 1px grey;
+    background-color: lightgray;
+    color: grey;
+}
+
+.item-1 a {
+    color: grey;
+}
+
+.list {
+    margin: 1rem;
+    text-align: right;
+}
+
+.list a {
+    text-decoration: none;
+    color: black;
+}
+
+.list .active{
+    border-bottom: solid 2px #4783ec;
+}
+
+.list ion-icon {
+    color: #085AA3;
+}
+
+.quantity {
+    margin: 0 1rem 1rem 1rem;
+    text-align: right;
+}
+
+.quantity a{
+    text-decoration: none;
+    color: black;
+}
+
+.quantity .active {
+    border-bottom: solid 2px #4783ec;
+}
+
+.flash.success {
+    color: green;
+    padding-top: 1.4rem;
+}
+
+.flash.error {
+    color: red;
+    padding-top: 1.4rem;
+}
+
+.button {
+    padding: 0.4rem 2.6rem;
+    font-size: 15px;
+    border: 0;
+    color: white;
+    background-color: #4783ec;
+}
+
+.button:hover {
+    background-color: #085AA3;
+}
+
