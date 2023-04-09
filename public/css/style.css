@@ -126,6 +126,10 @@ main {
     color: grey;
 }
 
+.item-1 .active {
+    color: #5d5d5d;
+}
+
 .item-1 a {
     color: grey;
 }
